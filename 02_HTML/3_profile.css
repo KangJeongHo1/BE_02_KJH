@@ -1,0 +1,48 @@
+*{
+    text-align: center;
+}
+
+html{
+    background-color: #9c7151;
+    font-size: 16px;
+}
+
+body{
+    width: 640px;
+    font-family: 'Black Han Sans', sans-serif;
+    margin: auto; /*너비에서 남는 여백을 동일하게 분배*/
+    color: #31230f
+}
+
+h1{
+    font-size: 50px;
+}
+
+img{
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+}
+
+p{
+    font-size: 1.3rem;
+}
+
+.line-word{
+    text-decoration: underline;
+}
+
+
+#funfacts {
+    background-color: #ffd700; /* 배경 색상을 황금색으로 변경 */
+    padding: 10px; /* 텍스트 주위에 여백 추가 */
+    border: 3px solid #ffffff;
+    border-radius: 10px; /* 모서리를 둥글게 만듭니다. */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+/*
+글꼴 및 색상, 자기가 원하는 스타일 추가 적용하기
+*/
