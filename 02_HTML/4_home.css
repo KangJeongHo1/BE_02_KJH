@@ -1,0 +1,92 @@
+body {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+    background-color: #a2e1db;
+    margin: 0;
+    padding: 0;
+}
+
+
+section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+aside {
+    text-align: center;
+    font-size: 25px;
+    width: 20%;
+    background-color: #beefff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    background-color: #FFFFFF;
+    width: 74%;
+    border-radius: 10px;
+    margin-left: 3px;
+}
+
+footer {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.dots_d{
+    list-style-type: none;
+    padding-left: 0;
+    
+}
+
+
+.dots_d li{
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.dots_d li:hover{
+    background-color: #d4edf7;
+}
+
+#game{
+    background: url(../images/gamgi.jpg) no-repeat left center;
+    background-size: 20px 20px;
+    padding-left: 20px;
+}
+#ball{
+    background: url(../images/ball.jpg) no-repeat left center;
+    background-size: 20px 20px;
+    padding-left: 20px;
+}
+#oht{
+    background: url(../images/oht.jpeg) no-repeat left center;
+    background-size: 20px 20px;
+    padding-left: 20px;
+}
+#space{
+    background: url(../images/space.jpg) no-repeat left center;
+    background-size: 20px 20px;
+    padding-left: 20px;
+}
+
+main.category-content {
+    display: none;
+    padding: 20px;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: #4CAF50;
+}
+
