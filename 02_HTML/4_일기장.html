@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="4_일기장.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <title>나의 다이어리</title>
+</head>
+<body>
+    <header>
+        <h1>나의 다이어리</h1>
+    </header>
+    
+    <section id="entryForm">
+        <div id="dateSection">
+            <div class="right">
+                <label for="date">날짜입력:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+        <div id="emotionSection">
+            <div class="right">
+                <label for="emotion">감정상태:</label>
+                <label for="emotion">&#128520;</label>
+                <input type="range" id="emotion" name=" emotion" 
+                min="0" max="100" step="1" value="50">
+                <label for="emotion">&#128124;</label>
+        </div>
+
+    <section id="image">
+        <img src="../images/podo.jpg">
+    </section>
+        <div id="textSection">
+            <label for="entry">일기:</label>
+            <textarea id="entry" name="entry" rows="4" required></textarea>
+        </div>        
+        <button id="saveButton">저장</button>
+    </section>
+    
+    <section id="entries">
+        <!-- 여기에 일기 내용이 표시될 부분 -->
+    </section>
+
+    <footer>
+        <p>&copy; 2024 나의 다이어리</p>
+    </footer>
+</body>
+</html>
