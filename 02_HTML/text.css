@@ -1,0 +1,78 @@
+.chat_screen_texts_left{
+    padding: 0;
+    list-style-type: none;
+    clear: both;
+}
+
+.chat_screen_texts_left > .text{
+    background-color: yellow;
+    width: auto;
+    max-width: 40%;
+    height: 50px;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 30px;
+    position: relative;
+    left: 20px;
+}
+
+.chat_screen_texts_left > .text::after{
+    content: "";
+    border-right: 16px solid yellow;
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 10px;
+    left: -10px;
+}
+
+.chat_screen_texts_left > .text:hover{
+    background-color: rgb(255, 255, 255);
+    transition: background-color 1.5s 0.2s ease-in;
+}
+
+.chat_screen_texts_left > .text:hover::after{
+    border-right: 16px solid rgb(255, 255, 255);
+    transition: border-right 1.5s 0.2s ease-in;
+}
+
+/* 문제 : 말풍선이 너무 많아 질 때 오버플로우 해결 방법*/
+
+.chat_screen_texts_right{
+    float: right;
+    padding: 0;
+    list-style-type: none;
+}
+
+.chat_screen_texts_right > .text{
+    background-color: rgb(255, 255, 255);
+    width: 200px;
+    height: 50px;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 30px;
+    position: relative;
+    right: 20px;
+}
+
+.chat_screen_texts_right > .text::after{
+    content: "";
+    border-right: 16px solid rgb(255, 255, 255);
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 10px;
+    right: -10px;
+
+    transform: rotateY(180deg);
+}
+
+.chat_screen_texts_right > .text:hover{
+    background-color: yellow;
+    transition: background-color 1.5s 0.2s ease-in;
+}
+
+.chat_screen_texts_right > .text:hover::after{
+    border-right: 16px solid yellow;
+    transition: border-right 1.5s 0.2s ease-in;
+}

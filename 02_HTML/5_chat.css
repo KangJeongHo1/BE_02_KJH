@@ -1,0 +1,84 @@
+/*전체적인 세팅*/
+*{
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0px;
+}
+.container{
+    height: 100%;
+    background-color: #99FF99;
+}
+
+/*스크린 크기 조정*/
+.chat-screen{
+    height: calc(100% - 120px);
+    overflow-y: auto;
+}
+
+/*유저정보 표시되는 부분*/
+.user{
+    background-color: #FFFFFF;
+    padding: 14px;
+    height: 80px;
+}
+.user_column{
+    float: left;
+}
+.user_pic{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-image: url(/5회차/images/제목.png);
+    background-size: cover;
+}
+.user_nick, .user_count{
+    margin: 5px;
+}
+
+.user_count{
+    font-size: 12px;
+    color: rgb(172, 172, 171);
+}
+
+/*채팅 입력 창*/
+.chat-form{
+    height: 120px;
+    background-color: #FFFFFF;
+}
+.chat-form_field{
+    height: 120px;
+}
+.chat-form_msg{
+    float: left;
+    width: calc(100% - 120px);
+    height: 120px;
+    border: none;
+    resize: none;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.chat-form_bt{
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: #99FF99;
+    font-size: 10px;
+}
+
+.chat-form_msg:focus{
+    outline: none;
+}
+
+.chat-form_bt:active{
+    background-color: #077207;
+}
+
+/*글꼴 및 스타일링(나만의 채팅방을 완성해보자)*/
