@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>카운트다운</title>
+        <style>
+            p{
+                font-size: 25px;
+                font-weight: 900;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>현재 시각</h1>
+        <p id="time"></p>
+        <h1>올해의 남은 시간</h1>
+        <p id="l-time"></p>
+
+        <script>
+            let timerId;
+            startTimer();
+
+            function startTimer() {
+                const p = document.getElementById("time");
+                const lTimeP = document.getElementById("l-time");
+
+                function updateTimer() {
+                    const time = new Date();
+
+                    let year = time.getFullYear();
+                    let month = time.getMonth() + 1;
+                    month = month < 10 ? "0" + month : month;
+                    let day = time.getDay();
+                    let date = time.getDate();
+                    let hour = time.getHours();
+                    hour = hour < 10 ? "0" + hour : hour;
+                    let minute = time.getMinutes();
+                    minute = minute < 10 ? "0" + minute : minute;
+                    let seconds = time.getSeconds();
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    p.textContent = `현재 날짜와 시간 : ${Day(day)} ${Month(month)} ${date} ${hour}:${minute}:${seconds}
+                                GMT+0900(한국 표준시)`;
+
+                    const endYear = new Date(year, 11, 31, 23, 59, 59, 999);
+                    const timeDifference = endYear - time;
+
+                    const remainingDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                    const remainingHours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const remainingMinutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    const remainingSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                    lTimeP.textContent = `올해의 남은 시간 : ${remainingDays}일 ${remainingHours}시간 ${remainingMinutes}분 ${remainingSeconds}초`;
+                }
+
+                timerId = setInterval(updateTimer, 1000);
+
+                function Day(day) {
+                    const days = ["SUN", "MON", "TUES", "WED", "THURS", "FRI", "SAT"];
+                    return days[day];
+                }
+
+                function Month(month) {
+                    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AGU", "SEP", "OCT", "NOB", "DES"];
+                    return months[month - 1];
+                }
+            }
+
+            window.onload = startTimer;
+        </script>
+    </body>
+</html>
