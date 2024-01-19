@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>value 속성</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="buttonList">
+                <button id="plusIce">아이스크림 종류 추가</button>
+                <button id="printIce">아이스크림 이름 출럭</button>
+                <button id="printInput">입력한 아이스크림 목록 출력</button>
+            </div>
+            <h2>입력한 아이스크림 목록:</h2>
+            <p id="AllIce"></p>
+        </div>
+
+
+        <script>
+            const IceCreamList = []
+
+            const plusIce = document.getElementById("plusIce")
+            const printIce = document.getElementById("printIce")
+            const printInput = document.getElementById("printInput")
+            const allIce = document.getElementById("AllIce")
+
+            plusIce.addEventListener("click", alertIce)
+
+            function alertIce(){
+                const newIceCream = prompt("추가하고 싶은 아이스크림을 입력해주세요.")
+                if(newIceCream){
+                    IceCreamList.push(newIceCream)
+                }
+            }
+
+            printIce.addEventListener("click", displayIce)
+            
+            function displayIce(){
+                IceCreamList.forEach(function(IceCream){
+                    alert(IceCream)
+                }) 
+            }
+
+            printInput.addEventListener("click", displayallIce)
+
+            function displayallIce(){
+                allIce.textContent = IceCreamList.join(",")
+            }
+        </script>
+    </body>
+</html>
