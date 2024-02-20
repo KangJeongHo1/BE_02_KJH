@@ -21,11 +21,18 @@ def index():
         product_name = request.args.get('product_name', '')
         sql = "SELECT * FROM kream WHERE 1=1"
 
+        params= []
+
         if category and category != '카테고리':
-            sql += f" AND category = '{category}'"
+            print("카테고리:", category)  
+            sql += f" AND category = %s "
+            params.append(category)
         if product_name:
-            sql += f" AND product_name LIKE '%{product_name}%'"
-        cur.execute(sql)
+            print("제품명:", product_name)  
+            sql += f" AND product_name LIKE %s "
+            params.append(f"%{product_name}%")
+
+        cur.execute(sql, params)
         kream_data = cur.fetchall()
 
         
@@ -44,4 +51,4 @@ def index():
 
 if __name__ == '__main__':
     app.debug=True
-    app.run
+    app.run()
