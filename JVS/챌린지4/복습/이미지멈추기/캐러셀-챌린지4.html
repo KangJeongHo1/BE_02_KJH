@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>캐러셀 만들기</title>
+        <link href="캐러셀.css" rel="stylesheet">
+
+    </head>
+    <body style="margin: 0">
+
+        <div class="container" style="overflow: hidden;">
+            <div class="inner">
+                <img src="/4회차/images/podo.jpg">
+            </div>
+            <div class="inner">
+                <img src="/4회차/복습/이미지멈추기/images/unnamed.jpg">
+            </div>
+            <div class="inner">
+                <img src="/4회차/복습/이미지멈추기/images/제주도.jpg">
+            </div>
+        </div>
+
+        <button id="start">시작</button>
+        <button id="stop">정지</button>
+
+        <script> 
+        const images = [
+            "/4회차/images/podo.jpg",
+            "/4회차/복습/이미지멈추기/images/unnamed.jpg",
+            "/4회차/복습/이미지멈추기/images/제주도.jpg"
+        ];
+
+        const container = document.querySelector(".container");
+        let carouselInterval;
+
+        function update() {
+            const index = Math.floor(Math.random() * images.length);
+            container.style.transform = `translate(${-index * 100}vw)`;
+        }
+
+        document.getElementById("start").addEventListener("click", function () {
+            update();
+            carouselInterval = setInterval(update, 1000); // 1초마다 업데이트
+        });
+
+        document.getElementById("stop").addEventListener("click", function () {
+            clearInterval(carouselInterval);
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>document</title>
+
+        <style>
+            .dark-mode{
+                background-color: black;
+                color: white;
+            }
+            .light-mode{
+                background-color: white;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="Mode(`dark`)">Dark mode</button>
+        <button onclick="Mode(`light`)">Light mode</button>
+
+        <script>
+            function Mode(mode) {
+                var body = document.body
+                body.classList.remove("dark-mode", "light-mode")
+                body.classList.add(`${mode}-mode`)
+            }
+        </script>
+    </body>
+</html>

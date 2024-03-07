@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>캐러셀 만들기</title>
+        <link href="캐러셀.css" rel="stylesheet">
+        <style>
+            .dark-mode{
+                background-color: #000;
+                color: #FFF;
+            }
+
+        </style>
+
+    </head>
+    <body style="margin: 0">
+
+        <div style="overflow: hidden;">
+            <div class="container">
+                <div class="inner">
+                    <img src="/1회차/images/podo.jpg">
+                </div>
+                <div class="inner">
+                    <img src="/1회차/images/unnamed.jpg">
+                </div>
+                <div class="inner">
+                    <img src="/1회차/images/제주도.jpg">
+                </div>
+        </div>
+
+        <button onclick="darkmode()" id="button">Dark mode</button>
+        <button class="버튼2">다음</button>
+        <button class="버튼3">이전</button>
+
+        <script>
+            let index = 0
+
+            document.querySelector(`.버튼2`).addEventListener(`click`, function(){
+            
+                index = (index + 1) % 3
+                update()
+            })
+
+            document.querySelector(`.버튼3`).addEventListener(`click`, function(){
+            
+                index = (index - 1 + 3) % 3
+                update()
+            })
+
+            function update(){
+                document.querySelector(`.container`).style.transform = `translate(${-index * 100}vw)`;
+            }
+
+            function darkmode(){
+                var body = document.body;
+                body.classList.toggle("dark-mode");
+
+                var button = document.getElementById("button")
+                if(button.innerHTML == "Dark mode"){
+                    button.innerHTML = "Light mode"
+                } else{
+                    button.innerHTML = "Dark mode"
+                }
+            }
+        </script>
+    </body>
+</html>

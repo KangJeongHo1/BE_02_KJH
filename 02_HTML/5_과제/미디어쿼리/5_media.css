@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s; /* 배경색 전환 애니메이션을 부드럽게 만듭니다. */
+}
+
+/* 1번 화면 (초록색 그라데이션) */
+@media screen and (max-width: 8800px) {
+    body {
+        background: linear-gradient(to right, #00cc99, #33cc33);
+    }
+}
+
+/* 2번 화면 (노란색 그라데이션) */
+@media screen and (min-width: 801px) and (max-width: 1100px) {
+    body {
+        background: linear-gradient(to right, #ffcc00, #ff9900);
+    }
+}
+
+/* 3번 화면 (파란색 그라데이션) */
+@media screen and (min-width: 1101px) and (max-width: 1400px) {
+    body {
+        background: linear-gradient(to right, #3366cc, #3399ff);
+    }
+}
+
+/* 4번 화면 (분홍색 그라데이션) */
+@media screen and (min-width: 1401px) {
+    body {
+        background: linear-gradient(to right, #ff6699, #ff3366);
+    }
+}
+
+h1{
+    color: white;
+}

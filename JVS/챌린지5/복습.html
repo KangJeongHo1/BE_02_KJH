@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>멀리뛰기</title>
+
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+
+            table{
+                width: 50%;
+            }
+
+            th, td{
+                padding: 10px;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>떡잎 유치원 멀리뛰기 결과</h1>
+
+        <table border="2">
+            <tr>
+                <td>이름</td>
+                <td>점수</td>
+            </tr>
+            <tr>
+                <td id="name1">짱구</td>
+                <td id="score1"></td>
+            </tr>
+            <tr>
+                <td id="name2">맹구</td>
+                <td id="score2"></td>
+            </tr>
+            <tr>
+                <td id="name3">철수</td>
+                <td id="score3"></td>
+            </tr>
+            <tr>
+                <td id="name4">훈이</td>
+                <td id="score4"></td>
+            </tr>
+            <tr>
+                <td id="name5">유리</td>
+                <td id="score5"></td>
+            </tr>
+            <tr>
+                <td id="name6">수지</td>
+                <td id="score6"></td>
+            </tr>
+        </table>
+
+        <h2 id="75-up">75점이 넘는 사람 : </h2>
+
+        <script>
+            function RandomScore(){
+                return Math.floor(Math.random() * 100) + 1
+            }
+
+            function HighScore(element, score, name){
+                element.innerText = score
+                if(score > 74){
+                    element.style.color = "green"
+                    document.getElementById("75-up").innerHTML += `<br>${element.previousElementSibling.innerText}: ${score}점`
+
+                }
+            }
+
+            for (let i = 1; i <= 6; i++){      
+                const scoreElement = document.getElementById(`score${i}`);
+                const randomScore = RandomScore();
+                HighScore(scoreElement, randomScore);
+
+                console.log(name)
+                
+            }
+            </script>
+    </body>
+    </html>

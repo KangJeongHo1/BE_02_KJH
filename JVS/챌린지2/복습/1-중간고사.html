@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>중간고사 점수</title>
+        <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            font-size: 16px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            width: auto;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>다음 조건을 입력하세요.</h1>
+            <h3>조건 :</h3>
+            <h2>1. 입력창을 띄워 사용자의 0~100까지의 점수를 받는다.</h2>
+            <h2>2. 입력 받은 점수에 맞는 성적의 등급을 나눈다
+                <table border="1">
+                    <tr>
+                        <th>학점</th>
+                        <th>90점 이상</th>
+                        <th>80점 이상</th>
+                        <th>70점 이상</th>
+                        <th>60점 이상</th>
+                        <th>60점 미만</th>
+                    </tr>
+                    <tr>
+                        <td>점수</td>
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>F</td>
+                    </tr>
+                </table>    
+            </h2><br>
+
+            <p id="result"></p>
+        </div>
+
+        <script>
+
+        window.onload = function() {
+            grade();
+        }
+
+            function grade(){
+                const Input = prompt("성적을 입력하세요.")
+                const grade = parseInt(Input)
+
+                let resultText = "나의 시험 점수는 : " + Input + " ,학점은 : ";
+
+                    if (isNaN(grade)) {
+                        resultText += "올바른 성적을 입력하세요.";
+                    } else if (grade >= 90) {
+                        resultText += "A 학점입니다.";
+                    } else if (grade >= 80) {
+                        resultText += "B 학점입니다.";
+                    } else if (grade >= 70) {
+                        resultText += "C 학점입니다.";
+                    } else if (grade >= 60) {
+                        resultText += "D 학점입니다.";
+                    } else {
+                        resultText += "F 학점입니다.";
+                    }
+
+                    document.getElementById("result").innerText = resultText
+            }
+        </script>
+    </body>
+</html>
