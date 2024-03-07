@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Admin Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+      nav{
+        display: flex;
+        justify-content: center;
+      }
+      #Newtime span{
+        font-size: 10px;
+      }
+    </style>
+</head>
+    <div class="container mt-3">
+        <h2 class="mt-5 mb-3" id="Newtime"></h2>
+        <form class="row gy-2 gx-3 align-items-center">
+            <div class="col-auto">
+              <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+              <select class="form-select" id="autoSizingSelect">
+                <option selected>카테고리</option>
+                <option value="1">상의</option>
+                <option value="2">하의</option>
+                <option value="3">신발</option>
+                <option value="4">패션잡화</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <label class="visually-hidden" for="autoSizingInput">Name</label>
+              <input type="text" class="form-control" id="autoSizingInput" placeholder="제품명을 입력해주새요.">
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary">조회</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-outline-danger" onclick="deleteData()">삭제</button> 
+            </div>
+          </form>
+          <div class="container mt-3">
+        <table class="table table-stripe">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">카테고리</th>
+                    <th scope="col">브랜드</th>
+                    <th scope="col">상품명</th>
+                    <th scope="col">성별</th>
+                    <th scope="col">가격</th>
+                </tr>
+            </thead>
+                <!-- 열의 속성값을 나타내는 코드를 작성해주세요 (예 : 카테고리, 브랜드, 상품명, 가격) -->
+            </thead>
+            <tbody id="data-table">
+                <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
+            </tbody>
+        </table>
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <a href="https://github.com/KangJeongHo1/BE_02_KJH" target="_blank"
+    style="display: flex;justify-content: center;">
+      <img src="https://blog.kakaocdn.net/dn/Kl0e8/btqCzADnGSi/fC7tMdoSp6oGS8L2K429V1/img.png" 
+      style="width: auto; height: 80px;">
+    </a>
+    <!-- 페이지 네이션 코드를 넣어주세요 -->
+    <script>
+      const p = document.getElementById("Newtime")
+      
+      function updateTimer() {
+        const time = new Date();
+
+        let year = time.getFullYear();
+        let month = time.getMonth() + 1;
+        month = month < 10 ? "0" + month : month;
+        let day = time.getDay();
+        let date = time.getDate();
+        let hour = time.getHours();
+        hour = hour < 10 ? "0" + hour : hour;
+        let minute = time.getMinutes();
+        minute = minute < 10 ? "0" + minute : minute;
+        let seconds = time.getSeconds();
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        p.innerHTML = `신규 등록 상품 <span>${year}-${month}-${date}</span>`
+      }
+      const data = [
+          { checkbox: false, category: '상의', brand: 'Supreme', product: '슈프림 박스로고 후드티', gender: 'Man', price: '390,000' },
+          { checkbox: false, category: '하의', brand: 'DIESEL', product: '디젤 트랙 팬츠', gender: 'Woman', price: '188,000' },
+          { checkbox: false, category: '신발', brand: 'Nike', product: '에어포스 1', gender: 'ALL', price: '137,000' },
+          { checkbox: false, category: '패션잡화', brand: 'Music&Goods', product: '빵빵이 키링', gender: 'ALL', price: '29,000' },
+          // ...
+      ]
+
+      setInterval(updateTimer, 1000)
+  
+      const dataTable = document.getElementById('data-table')
+  
+      // 행 마다 체크박스와 데이터에 해당하는 열들을 삽입
+      function renderData() {
+          data.forEach((item, index) => {
+              const row = dataTable.insertRow()
+              row.insertCell(0).innerHTML = `<input type="checkbox" name="selectRow" value="${index}">`
+              row.insertCell(1).innerHTML = item.category
+              row.insertCell(2).innerHTML = item.brand
+              row.insertCell(3).innerHTML = item.product
+              row.insertCell(4).innerHTML = item.gender
+              row.insertCell(5).innerHTML = item.price
+          })
+      }
+  
+      // 체크된 행의 데이터를 삭제하고, 테이블을 다시 렌더링한다
+      function deleteData() {
+          const selectedRows = Array.from(document.querySelectorAll('input[name="selectRow"]:checked'))
+              .map(checkbox => checkbox.value)
+          selectedRows.reverse().forEach(index => {
+              data.splice(index, 1)
+          })
+          dataTable.innerHTML = ''
+          renderData()
+      }
+
+      // 새로고침을 하면 초기 데이터가 테이블에 렌더링
+      document.addEventListener('DOMContentLoaded', renderData)
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

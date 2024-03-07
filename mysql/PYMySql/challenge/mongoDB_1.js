@@ -1,0 +1,15 @@
+//use albums
+
+db.album.find({}, {앨범: 1, 연도: 1, 최고순위: 1})
+db.album.find({연도: "2000"})
+db.album.find({최고순위: {$lte: 10}})
+db.album.find({최고순위: '-'})
+db.album.aggregate([{$group: {_id:"$연도", count: {$sum: 1}}}])
+db.album.find().sort({연도: -1}).limit(1)
+db.album.find().sort({연도: 1}).limit(1)
+db.album.find({최고순위: {$gte: 10}})
+db.album.find({앨범: /White/})
+db.album.find({연도: {$gte: '2000', $lte: '2004'}})
+db.album.insert({앨범: 'New Album', 연도: '2024', 최고순위: '1'})
+db.album.update({앨범: 'New Album'}, {$set: {최고순위: '2'}})
+db.album.remove({앨범: 'New Album'})

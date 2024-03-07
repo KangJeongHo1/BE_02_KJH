@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>스톱워치</title>
+    </head>
+    <body>
+        <h1>&#x23F0;스톱워치&#x23F0;</h1>
+        <p id="display">0:0:0</p>
+        <div id="button">
+            <button id="start">시작</button>
+            <button id="stop">중지</button>
+            <button id="reset">리셋</button>
+        </div>
+
+        <script>
+            const displayEl = document.getElementById("display")
+            const startBtn = document.getElementById("start")
+            const stopBtn = document.getElementById("stop")
+            const resetBtn = document.getElementById("reset")
+
+            let time = 0
+
+            let intervalId
+
+            function start(){
+                intervalId = setInterval(() => {
+                time += 1
+
+                const formattedtime = timetofor(time)
+                displayEl.innerText = `${formattedtime.minutes}:${formattedtime.seconds}:${formattedtime.milliseconds}`
+                }, 100)
+            }
+
+            function stop(){
+                clearInterval(intervalId)
+            }
+
+            function timetofor(time){
+                const minutes = Math.floor(time / 600)
+                const seconds = Math.floor((time % 600) / 10)
+                const milliseconds = time % 10
+
+                return { minutes, seconds, milliseconds }
+            }
+            
+            function reset(){
+                clearInterval(intervalId)
+                time = 0
+                displayEl.innerText = "0:0:0"
+            }
+
+            startBtn.onclick = start
+            stopBtn.onclick = stop
+            resetBtn.onclick = reset
+        </script>
+    </body>
+</html>

@@ -1,0 +1,135 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+section {
+    margin: 20px;
+}
+
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.right label {
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#entryForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#entryForm label[for="date"]{
+    display: block;
+    text-align: right;
+}
+
+#entryForm textarea{
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 1px;
+}
+
+#entryForm input[type="date"] {
+    width: auto; /* 전체 폭을 사용하지 않도록 설정 */
+    margin-left: 10px; /* 다른 입력란과의 간격을 조절 */
+    float: right;
+}
+#entryForm input[class="range"] {
+    width: auto; /* 전체 폭을 사용하지 않도록 설정 */
+    margin-left: 10px; /* 다른 입력란과의 간격을 조절 */
+}
+
+#textSection{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#emotionSection{
+    width: 100%;
+    margin-top: 10px;
+}
+#emotionSection label{
+    display: block;
+    margin-bottom: 5px;
+}
+#emotion{
+    width: 20%;
+    margin-bottom: 5px;
+}
+#emotionOutput{
+    display: block;
+    text-align: right;
+    font-size: 0.8em;
+}
+
+#image {
+    text-align: center; 
+}
+
+#image img {
+    max-width: 60%; 
+    height: auto; 
+}
+#entryForm button {
+    width: 150px; 
+    display: inline-block; 
+    margin-right: auto;
+    margin-left: 5;
+
+}
+
+#textSection textarea {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 23px;
+}

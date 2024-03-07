@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>별트리</title>
+        <style>
+            body{
+                white-space: pre;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="oneStar">1번 별트리</h2>
+        <div id="starTreeout1"></div>
+        <h2>2번 별트리</h2>
+        <div id="starTreeout2"></div>
+        <h2>3번 별트리</h2>
+        <div id="starTreeout3"></div>
+        <script>
+            function printStarTree(height, ascending) {
+                let result = ``;
+    
+                for (let i = 1; i <= height; i++) {
+                    let stars = '*'.repeat(ascending ? i : height - i + 1);
+                    result += stars + `\n`;
+                }
+    
+                return result;
+            }
+    
+            const treeHeight = 5;
+            const treeHeight1 = 9;
+            const treeOutput1 = printStarTree(treeHeight, true);
+            document.getElementById(`starTreeout1`).innerText = treeOutput1;
+            const treeOutput2 = printStarTree(treeHeight, true) + printStarTree(treeHeight, false);
+            document.getElementById(`starTreeout2`).innerText = treeOutput2;
+
+            
+            function printStarTree3(height, ascending) {
+                let result = ``;
+    
+                for (let i = ascending ? 1 : height; ascending ? i <= height : i >= 1; i += ascending ? 2 : -2) {
+                let spaces = ' '.repeat((height - i) / 2);
+                let stars = '*'.repeat(i);
+                result += spaces + stars + spaces +`\n`;
+                }
+                return result;
+            }
+            const treeOutput3 = printStarTree3(treeHeight1, true) + printStarTree3(treeHeight1, false);
+            document.getElementById(`starTreeout3`).innerText = treeOutput3;
+        </script>
+    </body>
+</html>
