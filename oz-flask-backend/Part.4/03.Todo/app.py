@@ -13,7 +13,6 @@ app.config['JWT_SECRET_KEY'] = 'super-secret-key'
 app.config['API_TITLE'] = 'Todo API'
 app.config['API_VERSION'] = 'v1'
 app.config['OPENAPI_VERSION'] = '3.0.2'
-
 # db = SQLAlchemy(app)
 db.init_app(app)
 migrate = Migrate(app, db)

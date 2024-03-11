@@ -3,13 +3,6 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
-# def index():
-#     data = {
-#         'title':'Flask Jinja Template',
-#         'user':'jeongho',
-#         'is_admin':True,
-#         'item_list':["Item1", "Item2", "Item3"]
-#     }
 
 def index():
     users = [
@@ -18,9 +11,6 @@ def index():
         {"username": "gourmet", "name": "Chris"}
     ]
         
-        
-    
-    
     title = 'flask Jinja Template'
     
     # (1) rendering할 html 파일명 검색
