@@ -43,7 +43,8 @@ CUSTOM_USER_APPS = [
     "feeds.apps.FeedsConfig",
     "reviews.apps.ReviewsConfig",
     "rest_framework",
-    "rest_framework.authtoken"
+    "rest_framework.authtoken",
+    "rest_framework_simplejwt"
 ]
 
 INSTALLED_APPS = DJANGO_SYSTEM_APPS + CUSTOM_USER_APPS
@@ -135,6 +136,16 @@ AUTH_USER_MODEL = "users.user"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "config.authentication.JWTAuthentication"  # 커스텀 JWT 인증 클래스 사용
     ],
+}
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=14),
+    "SIGNING_KEY": "SECRET",
+    "ALGORITHM": "HS256",
+    "AUTH_HEADER_TYPES": ("Bearer",),
 }
