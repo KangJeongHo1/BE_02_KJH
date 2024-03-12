@@ -1,5 +1,5 @@
-from flask import request, jsonify
-from flask_smorest import Blueprint
+from flask import request, jsonify  
+from flask_smorest import Blueprint 
 from flask_jwt_extended import create_access_token
 from models import User
 from werkzeug.security import check_password_hash
@@ -12,6 +12,7 @@ def login():
     if not request.is_json:
         print('if not request.is_json')
         return jsonify({"msg": "Missing JSON in request"}), 400
+4. api.register_blueprint(auth_blp)
 
     username = request.json.get('username', None)
     password = request.json.get('password', None)
