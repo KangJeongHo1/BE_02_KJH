@@ -1,0 +1,48 @@
+1. from flask import request, jsonify  
+2. from flask_smorest import Blueprint 
+3. from flask_jwt_extended import create_access_token
+4. from models import User
+5. from werkzeug.security import check_password_hash
+6. auth_blp = Blueprint('auth', 'auth', 
+                     url_prefix='/login', description='Operations on todos')
+--------------------------------------------------------------------------------
+1. request : 사용자가 객체를 싣어보낸다. | jsonify : Python 객체를 JSON형식으로 변환하여 HTTP응답으로 반환
+2. blueprint : 객체를 만들고 만들어진 객체를 통해 동일한 url로 묶어줌
+3. create_access_token : 함수를 사용해서 액세스 토큰을 생성 후 JSON 형태로 클라이언트에게 반환
+4. models파일에서 User 객체 불러오기
+5. 사용자가 제공한 비밀번호가 해시된 비밀번호와 일치하는지 검사하는데 사용
+6. 첫 번째, 두 번째 인자를 auth로 설정하고 엔드포인트 이름으로 사용
+
+--------------------------------------------------------------------------------
+1. @auth_blp.route('/', methods=['POST'])
+2. def login():
+    if not request.is_json:
+        print('if not request.is_json')
+        return jsonify({"msg": "Missing JSON in request"}), 400
+
+3.  username = request.json.get('username', None)
+    password = request.json.get('password', None)
+    if not username or not password:
+        print('if not username or not password')
+        return jsonify({"msg": "Missing username or password"}), 400
+
+4.  user = User.query.filter_by(username=username).first()
+    print('user 여기는오나', user)
+    print('user 여기는오나', check_password_hash(user.password_hash, password))
+5.  if user and check_password_hash(user.password_hash, password):
+        access_token = create_access_token(identity=username)
+        print('access_token', access_token)
+        return jsonify(access_token=access_token)
+6.  else:
+        return jsonify({"msg": "Bad username or password"}), 401
+--------------------------------------------------------------------------------
+1. auth_blp에 의해서 관리되며, HTTP에 POST요청을 처리한다. 엔트포인트는 '/'이며 루트경로다.
+2. 요청한 코드가 JSON형식인지 확인 후 아닌 경우 에러 메세지
+3. 요청한 JSON 데이터에서 각 value를 가져오고 없는 경우엔 "None"으로 반환. 두 값 중 하나라도 없는 경우
+에러 메세지로 반환
+4. 데이터베이스에서 해당 사용자명을 가진 사용자를 조회. User 모델에서 username 필드를 사용하여 조회하고
+첫 번째 결과를 가져온다.
+5. 사용자가 존재하면 비밀번호가 일치하는지 확인. 해시로 저장된 비밀번호를 함수를 사용하여 비밀번호 일치 여부 확인
+이후 생선된 액세스 토큰을 JSON형식으로 반환
+6. 인증 실패시 에러 메세지와 상태 코드를 반환
+

@@ -12,7 +12,6 @@ def login():
     if not request.is_json:
         print('if not request.is_json')
         return jsonify({"msg": "Missing JSON in request"}), 400
-4. api.register_blueprint(auth_blp)
 
     username = request.json.get('username', None)
     password = request.json.get('password', None)
